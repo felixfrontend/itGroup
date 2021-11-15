@@ -47,15 +47,13 @@ window.addEventListener("DOMContentLoaded", () => {
     modalBtn = document.querySelector("[data-modal]");
 
   const openModalSuccess = () => {
-    modalBtn.addEventListener("click", () => {
-      modal.classList.toggle("modal-success-show");
-      document.body.style.overflow = "hidden";
-    });
+    modal.classList.toggle("modal-success-show");
+    document.body.style.overflow = "hidden";
   };
 
   modalClose.addEventListener("click", closeSuccessModal);
 
-  function closeSuccessModal(e) {
+  function closeSuccessModal() {
     modal.classList.toggle("modal-success-show");
     document.body.style.overflow = "";
   }
@@ -99,11 +97,14 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   window.onscroll = () => {
-    if (window.scrollY > 600) {
-      scrollShow.classList.remove("show-scroll_hide");
-    } else if (window.scrollY < 600) {
+    if (window.scrollY < 600) {
       scrollShow.classList.add("show-scroll_hide");
+      scrollShow.classList.remove("show-scroll_show");
+    } else if (window.scrollY > 600) {
+      scrollShow.classList.add("show-scroll_show");
+      scrollShow.classList.remove("show-scroll_hide");
     }
+
     scrollTop.addEventListener("click", () => {
       window.scrollTo(0, 0);
     });
@@ -128,7 +129,7 @@ window.addEventListener("DOMContentLoaded", () => {
     orderForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const orderFormData = new FormData(orderForm);
-      sendData("http://itgit.kg/api/v1/course/signup", orderFormData)
+      sendData("http://192.168.10.247:8000/api/v1/course/signup", orderFormData)
         .then(() => {
           orderForm.reset();
           openModalSuccess();
@@ -138,6 +139,5 @@ window.addEventListener("DOMContentLoaded", () => {
         });
     });
   };
-
   sendOrderForm();
 });
