@@ -269,16 +269,23 @@ $color-secondary: #db4668;
       }
 
       button {
+        padding: 0;
         font-size: 18px;
         font-weight: bold;
         outline: none;
         border: none;
         border-radius: 5px;
-
-        padding: 12px 24px;
         border: 2px solid transparent;
+         a{ 
+           display: block;
+           padding: 18px 12px;
+         }
 
         @media (max-width: 576px) {
+          a{ 
+            display: block;
+            padding: 12px 6px;
+          }
         }
 
         &:first-child {
@@ -428,11 +435,12 @@ $color-secondary: #db4668;
     &-body {
       padding: 20px;
       margin-top: 20px;
+     min-height: 240px;
     }
 
     &-title {
       text-align: center;
-      font-size: 28px;
+      font-size: 22px;
       font-weight: 600;
     }
     &-text {
@@ -544,12 +552,13 @@ $color-secondary: #db4668;
     }
     &-label {
       padding: 5px 0;
-      flex: 1;
       margin: 0 10px;
       font-weight: bold;
       color: #fff;
+      width: 100%;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       &::after {
         content: "+";
         color: $color-secondary;
@@ -558,6 +567,7 @@ $color-secondary: #db4668;
       }
     }
     &-content {
+      border: 1px solid #ccc;
       font-weight: 600;
       position: relative;
       height: 0;
